@@ -8,11 +8,11 @@ public class Pessoa {
 
     private String nome;
     @Id
-    @GeneratedValue
     private String cpf;
     private int idade;
     @Temporal(TemporalType.DATE)
     private LocalDate dataNascimento;
+    @Embedded
     private Endereco endereco;
 
     public Pessoa(String nome, String cpf, int idade, LocalDate dataNascimento) {

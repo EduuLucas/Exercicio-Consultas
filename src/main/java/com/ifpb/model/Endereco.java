@@ -1,15 +1,20 @@
 package com.ifpb.model;
 
+import javax.persistence.Embeddable;
 import javax.persistence.Entity;
 import java.io.Serializable;
 
-@Entity
+@Embeddable
 public class Endereco implements Serializable {
 
     private String rua;
     private String cidade;
     private String CEP;
     private String bairro;
+
+    public Endereco() {
+        
+    }
 
     public Endereco(String rua, String cidade, String CEP, String bairro) {
         this.rua = rua;
