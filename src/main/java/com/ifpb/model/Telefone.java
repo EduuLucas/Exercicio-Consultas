@@ -17,11 +17,13 @@ public class Telefone implements Serializable {
     @JoinColumn(name="professor_cpf")
     private Professor professor;
 
+    public Telefone() {
+    }
+
     public Telefone(String numero, TelefoneType tipo, Professor professor) {
         this.numero = numero;
         this.tipo = tipo;
-        this.professor=professor;
-
+        this.professor = professor;
     }
 
     public String getNumero() {
@@ -46,5 +48,14 @@ public class Telefone implements Serializable {
 
     public void setProfessor(Professor professor) {
         this.professor = professor;
+    }
+
+    @Override
+    public String toString() {
+        return "Telefone{" +
+                "numero='" + numero + '\'' +
+                ", tipo=" + tipo +
+                ", professor=" + professor +
+                '}';
     }
 }

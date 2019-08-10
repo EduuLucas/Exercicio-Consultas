@@ -1,9 +1,6 @@
 package com.ifpb.model;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.List;
@@ -12,17 +9,23 @@ import java.util.List;
 public class Autor extends Pessoa implements Serializable {
 
     private String instituicaoVinculada;
+    @Embedded
+    private Endereco endereco;
 
     @ManyToMany
     @JoinTable(name="autorLivro",
             joinColumns = @JoinColumn(name = "autor_id"),
-            inverseJoinColumns = @JoinColumn(name = "livro_id") )
+            inverseJoinColumns = @JoinColumn(name = "livro_id"))
     private List<Livro> livros;
 
-    public Autor(String nome, String cpf, int idade, LocalDate dataNascimento, String instituicaoVinculada, List<Livro> livros) {
+    public Autor() {
+    }
+
+    public Autor(String nome, String cpf, int idade, LocalDate dataNascimento, String instituicaoVinculada, Endereco endereco, List<Livro> livros) {
         super(nome, cpf, idade, dataNascimento);
         this.instituicaoVinculada = instituicaoVinculada;
         this.livros = livros;
+        this.endereco = endereco;
     }
 
     public String getInstituicaoVinculada() {
@@ -31,6 +34,14 @@ public class Autor extends Pessoa implements Serializable {
 
     public void setInstituicaoVinculada(String instituicaoVinculada) {
         this.instituicaoVinculada = instituicaoVinculada;
+    }
+
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
     }
 
     public List<Livro> getLivros() {

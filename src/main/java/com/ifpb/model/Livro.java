@@ -1,5 +1,7 @@
 package com.ifpb.model;
 
+import com.ifpb.converters.LocalDateConverter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -12,10 +14,14 @@ public class Livro implements Serializable{
     @Id
     private String ISBN;
     @Temporal(TemporalType.DATE)
+    @Convert(converter = LocalDateConverter.class)
     private LocalDate lancamento;
 
     @ManyToMany(mappedBy = "livros")
     private List<Autor> autores;
+
+    public Livro() {
+    }
 
     public Livro(String titulo, String ISBN, LocalDate lancamento, List<Autor> autores) {
         this.titulo = titulo;
@@ -54,5 +60,14 @@ public class Livro implements Serializable{
 
     public void setAutores(List<Autor> autores) {
         this.autores = autores;
+    }
+
+    @Override
+    public String toString() {
+        return "Livro{" +
+                "titulo='" + titulo + '\'' +
+                ", ISBN='" + ISBN + '\'' +
+                ", lancamento=" + lancamento +
+                '}';
     }
 }

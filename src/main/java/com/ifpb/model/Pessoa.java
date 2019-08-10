@@ -1,5 +1,7 @@
 package com.ifpb.model;
 
+import com.ifpb.converters.LocalDateConverter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 
@@ -11,15 +13,17 @@ public class Pessoa {
     private String cpf;
     private int idade;
     @Temporal(TemporalType.DATE)
+    @Convert(converter = LocalDateConverter.class)
     private LocalDate dataNascimento;
-    @Embedded
-    private Endereco endereco;
 
     public Pessoa(String nome, String cpf, int idade, LocalDate dataNascimento) {
         this.nome = nome;
         this.cpf = cpf;
         this.idade = idade;
         this.dataNascimento = dataNascimento;
+    }
+
+    public Pessoa() {
     }
 
     public String getNome() {
@@ -52,5 +56,15 @@ public class Pessoa {
 
     public void setDataNascimento(LocalDate dataNascimento) {
         this.dataNascimento = dataNascimento;
+    }
+
+    @Override
+    public String toString() {
+        return "Pessoa{" +
+                "nome='" + nome + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", idade=" + idade +
+                ", dataNascimento=" + dataNascimento +
+                '}';
     }
 }
