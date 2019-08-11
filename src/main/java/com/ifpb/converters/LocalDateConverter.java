@@ -22,7 +22,6 @@ public class LocalDateConverter implements AttributeConverter<LocalDate, Date> {
         if (dbData == null) {
             return null;
         }
-
         return dbData.toLocalDate();
     }
 

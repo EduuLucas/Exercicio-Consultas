@@ -1,7 +1,6 @@
 package com.ifpb.view;
 
 import com.ifpb.model.*;
-import com.ifpb.model.Enum.TelefoneType;
 
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
@@ -10,13 +9,10 @@ import java.util.List;
 
 public class StartDB {
 
-    private List<Aluno> alunos = new ArrayList<>();
-    private List<Autor> autores = new ArrayList<>();
-    private List<Professor> professores = new ArrayList<>();
-    private List<Livro> livrosJPQL = new ArrayList<>();
-    private List<Livro> livrosCRITERIA = new ArrayList<>();
-    private List<Telefone> telefones1 = new ArrayList<>();
-    private List<Telefone> telefones2 = new ArrayList<>();
+    private List<Escritor> escritores = new ArrayList<>();
+    private List<Revisor> revisores = new ArrayList<>();
+    private List<Area> areas = new ArrayList<>();
+    private List<Publicacao> publicacoes = new ArrayList<>();
     private EntityManager em;
 
     public StartDB(EntityManager em) {
@@ -24,137 +20,63 @@ public class StartDB {
     }
 
 
-    public void addAlunos(){
+    public void addRevisores(){
 
-        alunos.add(new Aluno("Lucas", "111.111.111-111", 23, LocalDate.of(1999, 12,16), "11111", "2019.1", LocalDate.of(2019, 07,15),
-                new Endereco(
-                        "Travessa Januario Rolim de Albuquerque", "Cajazeiras", "58900000", "Por do Sol")));
-
-        alunos.add(new Aluno("Eduardo", "222.222.222-222", 19, LocalDate.of(1999, 12,15), "22222", "2017.1", LocalDate.of(2017, 07,15),
-                new Endereco(
-                        "Pres João Pessoa", "Cajazeiras", "58900000", "Centro")));
-
-        alunos.add(new Aluno("Carlos", "333.333.333-333", 25, LocalDate.of(1997, 04,23), "33333", "2015.2", LocalDate.of(2015, 07,15),
-                new Endereco(
-                        "Jacques Demolay", "Cajazeiras", "58900000", "Jardim Oasis")));
-
-        alunos.add(new Aluno("Larissa", "444.444.444-444", 20, LocalDate.of(1998, 03,12), "44444", "2017.2", LocalDate.of(2017, 07,15),
-                new Endereco(
-                        "Vitoria Bezerra", "Cajazeiras", "58900000", "Boa Vista")));
-
-        alunos.add(new Aluno("Samaritana", "555.555.555-555", 20, LocalDate.of(1995, 01,07), "55555", "2016.1", LocalDate.of(2016, 07,15),
-                new Endereco(
-                        "Higino Rolim", "Cajazeiras", "58900000", "Centro")));
+        revisores.add(new Revisor(4, "Lucas", LocalDate.of(1996, 12, 16),"7.6"));
+        revisores.add(new Revisor(5, "Eduardo", LocalDate.of(1995, 04, 23),"7.0"));
+        revisores.add(new Revisor(6, "Romero", LocalDate.of(1999, 07, 10),"8.5"));
 
     }
 
-    public void addLivrosJPQL(){
+    public void addEscritores(){
 
-        Livro JPQL_Esquente_A_Cabeça = new Livro();
-        JPQL_Esquente_A_Cabeça.setTitulo("JPQL_Esquente_A_Cabeça");
-        JPQL_Esquente_A_Cabeça.setISBN("1111");
-        JPQL_Esquente_A_Cabeça.setLancamento(LocalDate.of(2016,03,12));
-
-        Livro JPQL_Esfrie_A_Cabeça = new Livro();
-        JPQL_Esfrie_A_Cabeça.setTitulo("JPQL_Esfrie_A_Cabeça");
-        JPQL_Esfrie_A_Cabeça.setISBN("2222");
-        JPQL_Esfrie_A_Cabeça.setLancamento(LocalDate.of(2015,06,21));
-
-        livrosJPQL.add(JPQL_Esquente_A_Cabeça);
-        livrosJPQL.add(JPQL_Esfrie_A_Cabeça);
-
-    }
-    public void addLivrosCRITERIA(){
-
-        Livro CRITERIA_Esquente_A_Cabeça = new Livro();
-        CRITERIA_Esquente_A_Cabeça.setTitulo("CRITERIA_Esquente_A_Cabeça");
-        CRITERIA_Esquente_A_Cabeça.setISBN("3333");
-        CRITERIA_Esquente_A_Cabeça.setLancamento(LocalDate.of(2017,02,10));
-
-        Livro CRITERIA_Esfrie_A_Cabeça = new Livro();
-        CRITERIA_Esfrie_A_Cabeça.setTitulo("CRITERIA_Esfrie_A_Cabeça");
-        CRITERIA_Esfrie_A_Cabeça.setISBN("4444");
-        CRITERIA_Esfrie_A_Cabeça.setLancamento(LocalDate.of(2019,07,23));
-
-        livrosCRITERIA.add(CRITERIA_Esquente_A_Cabeça);
-        livrosCRITERIA.add(CRITERIA_Esfrie_A_Cabeça);
+        escritores.add(new Escritor(1, "Paulo", LocalDate.of(1992, 12, 07), 4));
+        escritores.add(new Escritor(2, "Roberto", LocalDate.of(1991, 06, 16), 2));
+        escritores.add(new Escritor(3, "Muriel", LocalDate.of(1992, 03, 27), 1));
 
     }
 
-    public void addAutores(){
+    public void addPublicacoes(){
 
-        autores.add(new Autor("Ricardo", "666.666.666-666", 23, LocalDate.of(1993, 12,16), "IFPB", new Endereco(
-                                "Treze de Maio", "Cajazeiras", "58900000", "Centro"),
-                livrosJPQL));
-        autores.add(new Autor("Job", "777.777.777-777", 23, LocalDate.of(1993, 12,16), "IFPB", new Endereco(
-                                "Treze de Maio", "Cajazeiras", "58900000", "Centro"),
-                livrosCRITERIA));
+        addRevisores();
+        addEscritores();
 
-    }
-
-    public void addTelefones(){
-
-        Telefone telefone1 = new Telefone();
-        telefone1.setNumero("11111-1111");
-        telefone1.setTipo(TelefoneType.RESIDENCIAL);
-
-        Telefone telefone2 = new Telefone();
-        telefone2.setNumero("22222-22228");
-        telefone2.setTipo(TelefoneType.COMERCIAL);
-
-        Telefone telefone3 = new Telefone();
-        telefone3.setNumero("33333-3333");
-        telefone3.setTipo(TelefoneType.RESIDENCIAL);
-
-        telefones1.add(telefone1);
-        telefones1.add(telefone2);
-        telefones2.add(telefone3);
+        publicacoes.add(new Publicacao(1, "A realidade virtual nos estudos tecnológicos", escritores.get(0), revisores.get(0)));
+        publicacoes.add(new Publicacao(2, "A realidade virtual nos estudos da saúde", escritores.get(1), revisores.get(1)));
+        publicacoes.add(new Publicacao(3, "A realidade virtual nos estudos da ciência", escritores.get(2), revisores.get(2)));
+        publicacoes.add(new Publicacao(4, "A realidade virtual nos estudos da ciência industrial", escritores.get(0), revisores.get(2)));
+        publicacoes.add(new Publicacao(5,"Java: Rápido e fácil", escritores.get(1), revisores.get(2)));
 
     }
 
-    public void addProfessores(){
+    public void addAreas(){
 
-        professores.add(new Professor("Ari", "888.888.888-888", 23, LocalDate.of(1992, 10,23), 7000.10, telefones1, new Endereco(
-                "José Ferreira Pires", "Cajazeiras", "58900000", "Fátima Santos")));
+        addPublicacoes();
 
-        professores.add(new Professor("Stofanio", "999.999.999-999", 23, LocalDate.of(1992, 10, 23), 5000.50, telefones2, new Endereco(
-                "Que atividade facil", "Cajazeiras", "58900000", "Centro")));
+        areas.add(new Area(1, "tecnologia", publicacoes.get(0)));
+        areas.add(new Area(2, "saúde", publicacoes.get(1)));
+        areas.add(new Area(3, "ciência", publicacoes.get(2)));
+        areas.add(new Area(4, "industria", publicacoes.get(3)));
 
     }
-
-
 
     public void Inicia() {
 
-        addAlunos();
-        addLivrosJPQL();
-        addLivrosCRITERIA();
-        addAutores();
-        addTelefones();
-        addProfessores();
+        addAreas();
 
         em.getTransaction().begin();
 
-        for (Aluno aluno : alunos) {
-            em.persist(aluno);
+        for (Revisor revisor : revisores) {
+            em.persist(revisor);
         }
-        for (Professor professor : professores) {
-            em.persist(professor);
+        for (Escritor escritor : escritores) {
+            em.persist(escritor);
         }
-        for(Telefone telefone:telefones1){
-            em.persist(telefone);
+        for(Area area : areas){
+            em.persist(area);
         }
-        for(Telefone telefone:telefones2){
-            em.persist(telefone);
-        }
-        for(Livro livro:livrosCRITERIA){
-            em.persist(livro);
-        }
-        for(Livro livro:livrosJPQL){
-            em.persist(livro);
-        }
-        for(Autor autor: autores){
-            em.persist(autor);
+        for(Publicacao publicacao : publicacoes){
+            em.persist(publicacao);
         }
         em.getTransaction().commit();
 

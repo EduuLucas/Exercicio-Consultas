@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="1.0">
     <persistence-unit name="Exercicio-consulta">
-        <class>com.ifpb.model.Autor</class>
-        <class>com.ifpb.model.Telefone</class>
-        <class>com.ifpb.model.Endereco</class>
-        <class>com.ifpb.model.Aluno</class>
-        <class>com.ifpb.model.Livro</class>
+        <class>com.ifpb.model.Area</class>
+        <class>com.ifpb.model.Escritor</class>
+        <class>com.ifpb.model.Publicacao</class>
+        <class>com.ifpb.model.Revisor</class>
         <class>com.ifpb.model.Pessoa</class>
-        <class>com.ifpb.model.Professor</class>
         <class>com.ifpb.converters.LocalDateConverter</class>
         <properties>
             <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
