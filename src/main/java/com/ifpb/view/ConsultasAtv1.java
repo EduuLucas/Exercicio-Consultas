@@ -33,9 +33,9 @@ public class ConsultasAtv1 {
 //        letraACRITERIA();
 //        letraBCRITERIA();
 //        letraCCRITERIA();
-        letraDCRITERIA();
-        //letraECRITERIA();
-        //letraFCRITERIA();
+//        letraDCRITERIA();
+//        letraECRITERIA();
+//        letraFCRITERIA();
 
     }
 
@@ -100,7 +100,6 @@ public class ConsultasAtv1 {
         Join<Autor, Livro> livro = autor.join("livros", JoinType.INNER);
         LocalDate data = LocalDate.of(1997, 1, 10);
         criteria.select(livro);
-        entityManager.createQuery(criteria).getResultList();
         for (Livro livro1 : entityManager.createQuery(criteria).getResultList()) {
             System.out.println(livro1.getTitulo());
         }
